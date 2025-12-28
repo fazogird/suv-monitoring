@@ -174,8 +174,8 @@ with col_map:
         "html": "<div style='font-family:sans-serif; color:white; background:#111; padding:10px; border:1px solid cyan; border-radius:5px;'>"
                 "<b>ID:</b> {id} <br/>"
                 "<b>Maydon | Area:</b> {display_area} ga <br/>"
-                "<b>Talab (ET):</b> {display_demand_ha} m³/ga <br/>"
-                "<b>Jami Hajm:</b> {display_demand_total} m³"
+                "<b>Suv Iste'moli(ET):</b> {display_demand_ha} m³/ga <br/>"
+                "<b>Suv Iste'moli(ET):</b> {display_demand_total} m³"
                 "</div>",
         "style": {"color": "white"}
     }
@@ -235,3 +235,4 @@ with col_stats:
         use_container_width=True,
         height=300 
     )
+
