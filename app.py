@@ -174,8 +174,8 @@ with col_map:
         "html": "<div style='font-family:sans-serif; color:white; background:#111; padding:10px; border:1px solid cyan; border-radius:5px;'>"
                 "<b>ID:</b> {id} <br/>"
                 "<b>Maydon | Area:</b> {display_area} ga <br/>"
-                "<b>Suv Iste'moli(ET):</b> {display_demand_ha} m³/ga <br/>"
-                "<b>Suv Iste'moli(ET):</b> {display_demand_total} m³"
+                "<b>Suv Iste'moli|(ET):</b> {display_demand_ha} m³/ga <br/>"
+                "<b>Suv Iste'moli|(ET):</b> {display_demand_total} m³"
                 "</div>",
         "style": {"color": "white"}
     }
@@ -212,7 +212,7 @@ with col_stats:
     
     fig = go.Figure()
     fig.add_trace(go.Scatter(x=names, y=y_sup, name="Sarf (Supply)", line=dict(color='#0068C9', width=2)))
-    fig.add_trace(go.Scatter(x=names, y=y_dem, name="Talab (Demand)", line=dict(color='#FF2B2B', width=2, dash='dot')))
+    fig.add_trace(go.Scatter(x=names, y=y_dem, name="Suv Iste'mol (Demand)", line=dict(color='#FF2B2B', width=2, dash='dot')))
     
     fig.update_layout(
         height=250,
@@ -235,4 +235,5 @@ with col_stats:
         use_container_width=True,
         height=300 
     )
+
 
