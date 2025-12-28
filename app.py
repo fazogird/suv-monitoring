@@ -152,6 +152,7 @@ else:
 
 # C. Gektariga hisoblash (0 ga bo'lish xatosini oldini olish)
 df['Current_Demand_Ha'] = np.where(df['area_ha'] > 0, df['Current_Demand'] / df['area_ha'], 0)
+df['display_demand_ha'] = df['Current_Demand_Ha'].round(2)
 
 # --- 5. KPI PANEL (ENG TEPADA) ---
 st.title("🛰️ Ekin Yerlari Suv Monitoringi | Field Water Monitoring (ET)")
@@ -187,6 +188,7 @@ with col_map:
     tooltip = {
         "html": "<div style='font-family:sans-serif; color:white; background:#111; padding:10px; border:1px solid cyan; border-radius:5px;'>"
                 "<b>ID:</b> {id} <br/>"
+                "<b>Maydon | Area:</b> {display_area} ga <br/>"
                 "<b>Talab (ET):</b> {Current_Demand_Ha} m³/ga <br/>"
                 "<b>Jami Hajm:</b> {Current_Demand} m³"
                 "</div>",
@@ -253,4 +255,5 @@ with col_stats:
         height=300 
 
     )
+
 
