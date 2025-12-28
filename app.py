@@ -42,7 +42,7 @@ st.markdown("""
 
     /* 3. LAYOUT */
     .block-container {
-        padding-top: 2rem;
+        padding-top: 0.5rem;
         padding-bottom: 0rem;
         padding-left: 1rem;
         padding-right: 1rem;
@@ -50,11 +50,11 @@ st.markdown("""
     div[data-testid="stMetric"] {
         background-color: #F8F9FB;
         border: 1px solid #D6D9E0;
-        padding: 10px;
+        padding: 5px 10px;
         border-radius: 8px;
     }
     h1 {
-        font-size: 1.6rem !important;
+        font-size: 1.4rem !important;
         margin-bottom: 1rem !important;
     }
 
@@ -197,7 +197,7 @@ with col_map:
         layers=[layer], initial_view_state=view_state, 
         map_style=pdk.map_styles.CARTO_DARK,
         tooltip=tooltip
-    ), use_container_width=True, height=600) 
+    ), use_container_width=True, height=500) 
 
 with col_stats:
     # --- ANALITIKA ---
@@ -215,7 +215,7 @@ with col_stats:
     fig.add_trace(go.Scatter(x=names, y=y_dem, name="Suv Iste'mol (Demand)", line=dict(color='#FF2B2B', width=2, dash='dot')))
     
     fig.update_layout(
-        height=250,
+        height=220,
         margin=dict(t=10,b=0,l=0,r=0),
         legend=dict(orientation="h", y=1.2),
     )
@@ -233,7 +233,8 @@ with col_stats:
     st.dataframe(
         top.style.format("{:.0f}").background_gradient(cmap="Reds", subset=['Current_Demand_Ha']),
         use_container_width=True,
-        height=300 
+        height=250 
     )
+
 
 
