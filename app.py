@@ -13,39 +13,36 @@ warnings.filterwarnings('ignore')
 pd.options.mode.chained_assignment = None 
 st.set_page_config(layout="wide", page_title="Suv Monitoringi | Water Monitoring")
 
-# --- CSS: IXCHAMLASHTIRISH / COMPACT STYLE ---
-# --- CSS: IXCHAMLASHTIRISH VA DARK MODENI O'CHIRISH ---
+# --- CSS: IXCHAMLASHTIRISH, DARK MODENI O'CHIRISH VA TOOLTIPNI TUZATISH ---
 st.markdown("""
 <style>
-    /* 1. MAJBURIY OQ FON (Force Light Mode) */
-    /* Bu kod telefon qora rejimda bo'lsa ham saytni oq qiladi */
+    /* 1. MAJBURIY OQ FON (Force Light Mode) - Yaxshilangan usul */
+    :root {
+        --primary-color: #0068C9;
+        --background-color: #FFFFFF; /* Orqa fon OQ */
+        --secondary-background-color: #F0F2F6;
+        --text-color: #262730; /* Asosiy matn rangi QORA */
+        --font: "sans serif";
+    }
+
+    /* Asosiy konteynerlarni oq rejimga o'tkazish */
     [data-testid="stAppViewContainer"] {
-        background-color: white;
-        color: black;
+        background-color: var(--background-color);
+        color: var(--text-color);
     }
     [data-testid="stSidebar"] {
-        background-color: #F0F2F6; /* Sidebar uchun och kulrang */
+        background-color: var(--secondary-background-color);
+        color: var(--text-color);
     }
     [data-testid="stHeader"] {
-        background-color: rgba(0,0,0,0); /* Tepasini shaffof qilish */
+        background-color: rgba(0,0,0,0);
     }
     
-    /* 2. ORTIQCHA TUGMALARNI YASHIRISH (Clean UI) */
-    .stDeployButton {display:none;}        /* Deploy tugmasi */
-    #MainMenu {visibility: hidden;}        /* Tepadagi 3 ta nuqta menu */
-    footer {visibility: hidden;}           /* Pastdagi "Made with Streamlit" */
-    header {visibility: hidden;}           /* Tepadagi rangli chiziq */
-    
-    /* 3. PASTDAGI ADMIN TUGMALARINI YASHIRISH */
-    /* "Manage App" tugmasi va GitHub profilini yashirish */
-    .stApp > header {display: none;}
-    a[href^="https://github.com"] {display: none;} /* GitHub linklarini yashirish */
-    
-    /* Agar Streamlit versiyasi yangi bo'lsa, pastdagi toolbar: */
-    [data-testid="stToolbar"] {visibility: hidden;} 
-    .viewerBadge_container__1QSob {display: none;}
+    /* 2. ORTIQCHA TUGMALARNI YASHIRISH */
+    .stDeployButton, #MainMenu, footer, header {visibility: hidden;}
+    [data-testid="stToolbar"], .viewerBadge_container__1QSob {display: none;}
 
-    /* 4. LAYOUT NI IXCHAMLASHTIRISH */
+    /* 3. LAYOUT VA KPI KARTOLAR */
     .block-container {
         padding-top: 2rem;
         padding-bottom: 0rem;
@@ -53,26 +50,22 @@ st.markdown("""
         padding-right: 1rem;
     }
     div[data-testid="stMetric"] {
-        background-color: #F8F9FB; /* Kartochka foni */
+        background-color: #F8F9FB;
         border: 1px solid #D6D9E0;
         padding: 10px;
         border-radius: 8px;
-        color: black; /* Yozuv rangi qora */
-    }
-    /* Kartochka ichidagi yozuvlarni ham majburan qora qilish */
-    div[data-testid="stMetricLabel"] p {
-        color: #31333F !important;
-    }
-    div[data-testid="stMetricValue"] div {
-        color: #000000 !important;
+        /* KPI ichidagi matn rangi avtomatik --text-color (qora) bo'ladi */
     }
     h1 {
         font-size: 1.6rem !important;
         margin-bottom: 1rem !important;
-        color: black !important;
     }
-    h3, h5, p, div {
-        color: black !important; /* Hamma yozuvni qora qilish */
+
+    /* --- 4. MUHIM: TOOLTIP RANGINI TUZATISH --- */
+    /* PyDeck tooltipi 'deckgl-tooltip' klassi ichida bo'ladi. */
+    /* Biz uning ichidagi yozuvni MAJBURAN OQ qilamiz. */
+    .deckgl-tooltip > div {
+        color: white !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -260,3 +253,4 @@ with col_stats:
         height=300 
 
     )
+
